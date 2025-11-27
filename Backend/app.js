@@ -10,7 +10,7 @@ const app = express();
 
 // Keep-alive
 setInterval(() => {
-  fetch("https://sweet-home-46ww.onrender.com/api/ping")
+  fetch("sweet-home-main-production.up.railway.app/api/ping")
     .catch(() => {});
 }, 5 * 60 * 1000);
 
@@ -20,7 +20,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // CORS
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: process.env.FRONTEND_URL,
   credentials: true
 }));
 
