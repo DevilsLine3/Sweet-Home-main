@@ -6,10 +6,20 @@ class productoModel {
     }
 
     async getAll() {
-        return await Producto.find()
-            .populate("Categoria", "Nombre -_id")
-            .populate("UsuarioCreador", "Nombre Email -_id"); 
-    }
+    return await Producto.find()
+        .lean() // ← Acelera muchísimo
+        .populate({
+            path: "Categoria",
+            select: "Nombre -_id",
+            options: { lean: true }
+        })
+        .populate({
+            path: "UsuarioCreador",
+            select: "Nombre Email -_id",
+            options: { lean: true }
+        });
+}
+
 
     
 
