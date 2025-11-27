@@ -67,7 +67,7 @@ const startServer = async () => {
     await dbClient.connectarBaseDatos();  // <--- AQUÍ
     console.log("Mongo conectado ✔️");
 
-    const PORT = process.env.PORT || 5100;
+    const PORT = process.env.PORT;
     app.listen(PORT, () =>
       console.log("Servidor activo en puerto " + PORT)
     );
